@@ -1,4 +1,4 @@
-const mongoose 			 = require('mongoose');
+const mongoose = require('mongoose');
 const configDB = require('./databaseCreds');
 mongoose.connect(configDB.url);
 

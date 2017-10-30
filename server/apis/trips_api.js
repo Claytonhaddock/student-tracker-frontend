@@ -5,10 +5,10 @@ exports.index = function(req, res) {
   .find()
   .where('UserId').equals(req.user.id)
   .then(function(dbTrip) {
-    res.render('trips/trips', {
-		  layout: 'main-trips',
-		  trip: dbTrip
-	  });
+   //  res.render('trips/trips', {
+		 //  layout: 'main-trips',
+		 //  trip: dbTrip
+	  // });
   });
 };
 
