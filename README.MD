@@ -1,13 +1,8 @@
-# Lightning Boneeeerrrrrrrss
+# Lightning Boneeerrrrrrsssss
 
-MONGO LOGIN INFO:
+## Setup for Local Machine
+1. Create database: travelSecure_development
+2. npm install
+2. Run application using npm start or nodemon start
 
--login credentials
-dbuser: clayton.haddock@gmail.com
-dbpassword: bonerman5000
-
--To connect using the mongo shell:
-mongo ds031835.mlab.com:31835/student_tracker -u <dbuser> -p <dbpassword>
-To connect using a driver via the standard MongoDB URI (what's this?):
-
--mongodb://<dbuser>:<dbpassword>@ds031835.mlab.com:31835/student_tracker
+## Purpose of Application
