@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import SignupReducer from './reducers_signup';
+import core from './core.js';
 
 const rootReducer = combineReducers({
-	signupStates: SignupReducer
+	core
 });
 
 export default rootReducer;
