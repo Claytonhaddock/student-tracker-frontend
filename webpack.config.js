@@ -48,15 +48,16 @@ module.exports = {
 								loader: 'css-loader',
 								options: {
 									modules: true,
-									localIdentName: '[path][name]__[local]--[hash:base64:5]'
+									localIdentName: '[path][name]__[local]--[hash:base64:5]',
+									importLoaders: 1
 								}
 							},
-							{ 	loader: 'sass-loader',
+							{ 	
+								loader: 'sass-loader',
 							  	options: {
 									includePaths: [path.resolve(__dirname, 'src')]
 									}
 								},
-							{ loader: 'postcss-loader' }
 						]
 				})
 			},
@@ -73,6 +74,7 @@ module.exports = {
 				test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/,
 				use: 'url-loader?limit=10000&mimetype=application/font-woff',
 			},
+			// {test: /\.(png|jpg|jpeg)$/, loader: 'url-loader'},
 			{
 				test: /\.(ttf|eot|svg|ico|jpg|gif|png)(\?[a-z0-9#=&.]+)?$/,
 				use: [

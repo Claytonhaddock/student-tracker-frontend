@@ -1,0 +1,56 @@
+.uniWrapper {
+    width: 80%;
+    margin: 80px auto;
+}
+
+.headerWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    > div {
+        display: flex;
+    }    
+
+    .uniIcon {
+        width: 100px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .nameAddress {
+        margin-left: 8px;
+
+        h2 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-top: 24px;
+        }
+
+        h4 {
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+
+    .cohorts {
+        margin-top: 28px;
+        span {
+            display: block;
+            margin-right: 36px;
+        }
+        span:first-child {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+        span:last-child {
+            font-size: 16px;
+            text-align: right;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+    }
+}
+

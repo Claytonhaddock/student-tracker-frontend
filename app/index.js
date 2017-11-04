@@ -7,6 +7,9 @@ import { createLogger } from 'redux-logger'
 import App from './components/App.js'
 import reducer from './reducers'
 
+import 'normalize.css'
+import './style.scss'
+
 let logger = createLogger({
 	predicate: (getState, action) => action.type !== SAVE_AVATAR
 })

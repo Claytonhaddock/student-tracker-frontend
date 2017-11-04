@@ -9,13 +9,19 @@ import {
 	Redirect
 } from 'react-router-dom'
 
-const App = ({}) => 
-	<div>
-		{/* <Router>
-			<Switch>
+import Nav from './nav'
+import Universities from './universities'
+import Student from './student'
 
+const App = ({}) => 
+    <Router>
+        <div>
+            <Route path="/" component={ Nav } />
+			<Switch>
+                <Route path="/:uni/:cohort/:student" component={ Student } />
+                <Route path="/:uni" component={ Universities } />
 			</Switch>
-		</Router> */}
-	</div>
+        </div>
+    </Router>
 
 export default App
