@@ -2,4 +2,30 @@
     height: 64px;
     width: 100%;
     background-color: #000;
+    color: #fff;
+
+    .next {
+        padding: 0 20px;
+    }
+
+    .breadCrumb {
+        padding: 18px 38px;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 1.1px;
+
+        .clickable {
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        
+        .university {
+            color: #11C8E7;
+
+        }
+        
+    }
 }

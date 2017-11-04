@@ -1,0 +1,1 @@
+export const SELECT_UNI = 'SELECT_UNI'

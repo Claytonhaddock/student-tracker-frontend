@@ -11,7 +11,7 @@ import 'normalize.css'
 import './style.scss'
 
 let logger = createLogger({
-	predicate: (getState, action) => action.type !== SAVE_AVATAR
+	
 })
 
 let store = true ? createStore(reducer, applyMiddleware(thunkMiddleware, logger))  : createStore(reducer, applyMiddleware(thunkMiddleware))

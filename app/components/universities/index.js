@@ -5,21 +5,40 @@ import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import Box from '../common/box'
+import Cohort from './cohort'
 import uclaIcon from '../../assets/samples/uclaIcon.png'
 import style from './style.scss'
+
+import {
+	selectUniveristy
+} from '../../actions/core'
 
 class Universities extends Component {
 
 	constructor(props){
 		super(props)
 
+		this.state = {
+			selectedUniversity: null
+		}
+
 		this._generateBoxHeader = this._generateBoxHeader.bind(this)
+		this._handleSelectUniversity = this._handleSelectUniversity.bind(this)
 	}
+
 
 
 	_logout(history){
 		const { dispatch } = this.props
 		// dispatch(signOut(history))
+	}
+
+	_handleSelectUniversity(uni){
+		const {
+			dispatch
+		} = this.props
+
+		dispatch(selectUniveristy(uni))
 	}
 
 	_generateBoxHeader(uni){
@@ -50,10 +69,16 @@ class Universities extends Component {
 		)
 	}
 
+
 	render(){
 		const {
-			universities
+			universities,
+			university
 		} = this.props
+
+		const {
+			selectedUniversity
+		} = this.state
 
 		return (
 			<div>
@@ -65,13 +90,27 @@ class Universities extends Component {
 							<div 
 								key={ uni.id }
 								className={ classNames(style.uniWrapper) }
+								onClick={ () => this._handleSelectUniversity(uni) }
 							>
 								<Box
 									headerContent={ headerContent }
 									primaryColor={ uni.primaryColor }
 									secondaryColor={ uni.secondaryColor }
 								>
-									<span>Children</span>
+									{
+										(university && university.id === uni.id) && (
+											<div className={ classNames(style.cohortsWrapper) }>
+												{
+													uni.cohorts.map((cohort,i) => (
+														<Cohort 
+															key={ i }
+															primaryColor={ uni.primaryColor }
+														/>
+													))
+												}
+											</div>
+										)
+									}
 								</Box>	
 							</div>
 						)
@@ -89,17 +128,24 @@ Universities.defaultProps = {
 		{
 			id: '1',
 			fullName: 'University of California, Los Angeles',
+			shortName: 'UCLA',
 			address: 'Los Angeles, CA 90095',
 			icon: uclaIcon,
 			ongoingCohorts: [1,2,3,4],
 			completedCohorts: [1,2,3,4,5],
 			primaryColor: '#3284BF',
-			secondaryColor: '#FFE800'
+			secondaryColor: '#FFE800',
+			cohorts: [
+				1,2,3,4
+			]
 		}
 	]
 }
 
 export default withRouter(connect(
 	state => ({
+		university: state.core.university,
+		cohort: state.core.cohort,
+		student: state.core.student
 	})
 )(Universities))

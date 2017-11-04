@@ -19,10 +19,32 @@ class Nav extends Component {
 	}
 
 	render(){
+		const {
+			university,
+			cohort,
+			student
+		} = this.props
+
+		const next = <span className={ classNames(style.next) }> > </span>
 
 		return (
 			<div  className={ classNames(style.navFixed) }>
-				Nav
+				<div className={ classNames(style.breadCrumb) }>
+					<span className={ classNames(style.university) }>
+						{
+							university ? (
+								<span className={ classNames(style.clickable) }>
+									{ university.shortName }
+								</span>
+							) : (
+								'Select an University'
+							)
+						}
+					</span>
+					{
+						university && next
+					}
+				</div>
 			</div>
 		)
 	}
@@ -34,5 +56,8 @@ Nav.defaultProps = {}
 
 export default withRouter(connect(
 	state => ({
+		university: state.core.university,
+		cohort: state.core.cohort,
+		student: state.core.student
 	})
 )(Nav))
