@@ -10,7 +10,8 @@ import uclaIcon from '../../assets/samples/uclaIcon.png'
 import style from './style.scss'
 
 import {
-	selectUniveristy
+	selectUniveristy,
+	selectCohort
 } from '../../actions/core'
 
 class Universities extends Component {
@@ -24,6 +25,7 @@ class Universities extends Component {
 
 		this._generateBoxHeader = this._generateBoxHeader.bind(this)
 		this._handleSelectUniversity = this._handleSelectUniversity.bind(this)
+		this._handleSelectCohort = this._handleSelectCohort.bind(this)
 	}
 
 
@@ -41,10 +43,21 @@ class Universities extends Component {
 		dispatch(selectUniveristy(uni))
 	}
 
+	_handleSelectCohort(cohort){
+		const {
+			dispatch
+		} = this.props
+
+		dispatch(selectCohort(cohort))
+	}
+
 	_generateBoxHeader(uni){
 
 		return (
-			<div className={ classNames(style.headerWrapper) }>
+			<div 
+				className={ classNames(style.headerWrapper) }
+				onClick={ () => this._handleSelectUniversity(uni) }
+			>
 				<div>
 					<div 
 						className={ classNames(style.uniIcon) }
@@ -90,7 +103,6 @@ class Universities extends Component {
 							<div 
 								key={ uni.id }
 								className={ classNames(style.uniWrapper) }
-								onClick={ () => this._handleSelectUniversity(uni) }
 							>
 								<Box
 									headerContent={ headerContent }
@@ -105,6 +117,7 @@ class Universities extends Component {
 														<Cohort 
 															key={ i }
 															primaryColor={ uni.primaryColor }
+															selectCohort={ this._handleSelectCohort }
 														/>
 													))
 												}

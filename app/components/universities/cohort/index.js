@@ -25,13 +25,15 @@ class Cohort extends Component {
             startDate,
             endDate,
             classes,
-            students
+            students,
+            selectCohort
         } = this.props
 
 		return (
 			<div 
                 className={ classNames(style.cohortContainer) }
                 style={{ backgroundColor: primaryColor}}
+                onClick={ () => selectCohort(cohortId) }
             >
                 <div className={ classNames(style.textWrapper) }>
                     <div className={ classNames(style.meta) }>

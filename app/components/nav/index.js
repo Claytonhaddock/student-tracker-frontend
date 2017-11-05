@@ -6,16 +6,30 @@ import classNames from 'classnames'
 
 import style from './style.scss'
 
+import {
+	goHome 
+} from '../../actions/core'
+
 class Nav extends Component {
 
 	constructor(props){
 		super(props)
+
+		this._goHome = this._goHome.bind(this)
 	}
 
 
 	_logout(history){
 		const { dispatch } = this.props
 		// dispatch(signOut(history))
+	}
+
+	_goHome(){
+		const {
+			dispatch
+		} = this.props
+
+		dispatch(goHome())
 	}
 
 	render(){
@@ -25,11 +39,18 @@ class Nav extends Component {
 			student
 		} = this.props
 
-		const next = <span className={ classNames(style.next) }> > </span>
+		const Next = () => <span className={ classNames(style.next) }> > </span>
 
 		return (
 			<div  className={ classNames(style.navFixed) }>
 				<div className={ classNames(style.breadCrumb) }>
+					<span 
+						className={ classNames(style.home, style.clickable) }
+						onClick={ this._goHome }
+					>
+						HOME
+					</span>
+					<Next />
 					<span className={ classNames(style.university) }>
 						{
 							university ? (
@@ -42,7 +63,21 @@ class Nav extends Component {
 						}
 					</span>
 					{
-						university && next
+						university && <Next />
+					}
+					<span className={ classNames(style.cohort) }>
+						{
+							university && (cohort ? (
+									<span className={ classNames(style.clickable) }>
+										{ cohort }
+									</span>
+								) : (
+									'Select a Cohort'
+								))
+						}
+					</span>
+					{
+						university && cohort && <Next />
 					}
 				</div>
 			</div>
