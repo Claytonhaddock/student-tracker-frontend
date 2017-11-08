@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import Box from '../common/box'
-import Cohort from './cohort'
+import Cohort from './cohortBlock'
 import uclaIcon from '../../assets/samples/uclaIcon.png'
 import style from './style.scss'
 

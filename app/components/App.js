@@ -11,6 +11,7 @@ import {
 
 import Nav from './nav'
 import Universities from './universities'
+import Cohort from './cohort'
 import Student from './student'
 
 const App = ({}) => 
@@ -19,6 +20,7 @@ const App = ({}) =>
             <Route path="/" component={ Nav } />
 			<Switch>
                 <Route path="/:uni/:cohort/:student" component={ Student } />
+                <Route path="/:uni/:cohort/" component={ Cohort } />
                 <Route path="/:uni" component={ Universities } />
 			</Switch>
         </div>

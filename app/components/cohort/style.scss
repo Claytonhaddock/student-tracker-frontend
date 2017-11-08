@@ -1,0 +1,143 @@
+.cohortNavWrapper {
+    margin: 20px 40px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #7a7a7a;
+    position: relative;
+
+    .cohortNav {
+        position: relative;
+        font-size: 36px;
+        font-weight: 400;
+        margin-right: 20px;
+        letter-spacing: 1.2px;
+        color: #D4D2D2;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .cohortNavActive {
+        color: #000;
+        cursor: initial;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .classIdHeader {
+        color: #353536;
+        font-size: 32px;
+        font-weight: 300;
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+        letter-spacing: 1.2px;
+    }
+}
+
+.students {
+    margin: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &:after {
+        content: "";
+        width: 300px;
+        visibility: hidden;
+    }
+}
+
+.overviewContainer {
+    position: relative;
+    margin: 0 40px;
+    letter-spacing: 1.2px;
+
+    .nameType {
+        color: #7A7A7A;
+        font-size: 24px;
+        font-weight: 300;
+        margin: 20px auto 40px;
+    }
+
+    .infoWrapper {
+        width: 350px;
+        height: 100px;
+
+        .infoHeader {
+            font-size: 24px;
+            color: #353536;
+            font-weight: 400;
+            margin: 0;
+            margin-bottom: 4px;
+        }
+
+        span {
+            color: #7a7a7a;
+            font-size: 17px;
+            font-weight: 300;
+        }
+        
+        p {
+            width: 300px;
+            color: #7a7a7a;
+            font-size: 17px;
+            font-weight: 300;
+            margin: 0;
+        }
+    }
+
+    .timeLocationWrapper {
+        width: 700px;
+
+        .infoHeader {
+            margin-bottom: 12px;
+        }
+    }
+
+    .flexWrapper {
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .people {
+        display: flex; 
+        flex-wrap: wrap;
+        width: 700px;
+    }
+
+    .timeLocationBlock {
+        width: 325px;
+        height: 125px;
+        border: 2px solid #979797;
+        margin-bottom: 40px;
+        position: relative;
+        font-size: 17px;
+        font-weight: 400;
+
+        .date {
+            color: #000;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .time {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        
+        .address {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+        }
+    }
+}
+
