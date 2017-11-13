@@ -2,6 +2,8 @@ import {
 	SELECT_UNI,
 	GO_HOME_DUDE,
 	SELECT_COHORT,
+	SELECT_STUDENT,
+	NAV_GO_TO
 } from '../constants/core'
 
 const initialState = {
@@ -19,6 +21,12 @@ const core = (state = initialState, action) => {
 				cohort: null,
 				student: null
 			}
+
+		case NAV_GO_TO: 
+			return {
+				...state,
+				...action.data
+			}
 	
 		case SELECT_UNI: 
 			return {
@@ -30,6 +38,12 @@ const core = (state = initialState, action) => {
 			return {
 				...state,
 				cohort: action.data
+			}
+
+		case SELECT_STUDENT: 
+			return {
+				...state,
+				student: action.data
 			}
 		
 		default:

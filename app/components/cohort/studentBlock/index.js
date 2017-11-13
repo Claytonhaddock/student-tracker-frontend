@@ -19,10 +19,15 @@ class StudentBlock extends Component {
         const {
             avatar,
             fullName,
-            github
+            github,
+            student,
+            selectStudent
         } = this.props
 		return (
-			<div className={ classNames(style.studentBlock) }>
+			<div 
+                className={ classNames(style.studentBlock) }
+                onClick={ () => selectStudent(student) }
+            >
                 <img src={ avatar } alt="Avatar Picture"/>
                 <div>
                     <p>{ fullName }</p>

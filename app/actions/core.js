@@ -1,14 +1,23 @@
 import {
     SELECT_UNI,
     SELECT_COHORT,
-    GO_HOME_DUDE
+    SELECT_STUDENT,
+    GO_HOME_DUDE,
+    NAV_GO_TO
 } from '../constants/core'
 
 
 
-export const  goHome = (uni) => {
+export const  goHome = () => {
     return {
         type: GO_HOME_DUDE
+    }
+}
+
+export const  navGoTo = (newObj) => {
+    return {
+        type: NAV_GO_TO,
+        data: newObj
     }
 }
 
@@ -23,5 +32,12 @@ export const  selectCohort = (cohort) => {
     return {
         type: SELECT_COHORT,
         data: cohort
+    }
+}
+
+export const  selectStudent = (student) => {
+    return {
+        type: SELECT_STUDENT,
+        data: student
     }
 }

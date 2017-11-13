@@ -1,3 +1,5 @@
 export const SELECT_UNI = 'SELECT_UNI'
 export const SELECT_COHORT = 'SELECT_COHORT'
+export const SELECT_STUDENT = 'SELECT_STUDENT'
 export const GO_HOME_DUDE = 'GO_HOME_DUDE'
+export const NAV_GO_TO = 'NAV_GO_TO'

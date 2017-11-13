@@ -7,7 +7,8 @@ import classNames from 'classnames'
 import style from './style.scss'
 
 import {
-	goHome 
+	goHome,
+	navGoTo 
 } from '../../actions/core'
 
 class Nav extends Component {
@@ -16,6 +17,7 @@ class Nav extends Component {
 		super(props)
 
 		this._goHome = this._goHome.bind(this)
+		this._goToPage = this._goToPage.bind(this)
 	}
 
 
@@ -26,10 +28,26 @@ class Nav extends Component {
 
 	_goHome(){
 		const {
-			dispatch
+			dispatch,
+			history
 		} = this.props
-
+		history.push('/uni')
 		dispatch(goHome())
+	}
+
+	_goToPage(path, type){
+		const {
+			dispatch,
+			history
+		} = this.props
+		history.push(path)
+
+		if (type === 'university') {
+			dispatch(navGoTo({
+				cohort: null,
+				student: null
+			}))
+		}
 	}
 
 	render(){
@@ -54,7 +72,10 @@ class Nav extends Component {
 					<span className={ classNames(style.university) }>
 						{
 							university ? (
-								<span className={ classNames(style.clickable) }>
+								<span 
+									onClick={ () => this._goToPage(`/${university.shortName}`, 'university') }
+									className={ classNames(style.clickable) }
+								>
 									{ university.shortName }
 								</span>
 							) : (
@@ -68,7 +89,10 @@ class Nav extends Component {
 					<span className={ classNames(style.cohort) }>
 						{
 							university && (cohort ? (
-									<span className={ classNames(style.clickable) }>
+									<span 
+										onClick={ () => this._goToPage(`/${university.shortName}/${cohort}`, 'cohort') }
+										className={ classNames(style.clickable) }
+									>
 										{ cohort }
 									</span>
 								) : (

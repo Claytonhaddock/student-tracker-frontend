@@ -7,6 +7,10 @@ import StudentBlock from './studentBlock'
 
 import style from './style.scss'
 
+import {
+	selectStudent
+} from '../../actions/core'
+
 class Cohort extends Component {
 
 	constructor(props){
@@ -17,13 +21,24 @@ class Cohort extends Component {
         }
 
         this._hanldeChangeViewState = this._hanldeChangeViewState.bind(this)
+        this._selectStudent = this._selectStudent.bind(this)
 	}
 
 
 	_hanldeChangeViewState(status){
 		this.setState({ isOnOverview: status })
     }
-    
+
+    _selectStudent(student){
+        const {
+            history,
+            university,
+            cohort,
+            dispatch
+        } = this.props
+        history.push(`/${university.shortName}/${cohort}/${student.id}`)
+        dispatch(selectStudent(student))
+    }
     
     _generateOverview(){
         const {
@@ -99,7 +114,8 @@ class Cohort extends Component {
             isOnOverview
         } = this.state
         const {
-            title
+            title,
+            students
         } = this.props
 
 		return (
@@ -129,9 +145,13 @@ class Cohort extends Component {
                     ) : (
                         <div className={ classNames(style.students) }>
                             {
-                                [1,2,3,4,5,6,7,8].map(std => (
+                                students.map(std => (
                                     <StudentBlock 
-                                        key={ std }
+                                        key={ std.id }
+                                        fullName={ std.fullName }
+                                        github={ std.github }
+                                        student={ std }
+                                        selectStudent={ this._selectStudent }
                                     />
                                 ))
                             }
@@ -152,7 +172,7 @@ Cohort.defaultProps = {
     range: 'Aug 7th 2017 -> Feb 10th 2018',
     instructor: 'Omar Patel',
     ssm: 'JP Alferos',
-    ta: 'Keith To · Paige Pittma · Clay Haddock · Nannette Julius',
+    ta: 'Keith To · Paige Pittman · Clay Haddock · Nannette Julius',
     careerCoach: 'Jenna Fuentes',
     classInfo: [
         {
@@ -170,10 +190,45 @@ Cohort.defaultProps = {
             time: '9:30a - 2:30p', 
             address: ['UNEX P1', '10995 Le Conte Ave', 'Los Angeles, CA 90024']
         },
+    ],
+    students: [
+        {
+            id: '1',
+            fullName: 'John Doe',
+            github: 'jd123',
+        },
+        {
+            id: '2',
+            fullName: 'John Doe',
+            github: 'jd123',
+        },
+        {
+            id: '3',
+            fullName: 'John Doe',
+            github: 'jd123',
+        },
+        {
+            id: '4',
+            fullName: 'John Doe',
+            github: 'jd123',
+        },
+        {
+            id: '5',
+            fullName: 'John Doe',
+            github: 'jd123',
+        },
+        {
+            id: '6',
+            fullName: 'John Doe',
+            github: 'jd123',
+        },
     ]
 }
 
 export default withRouter(connect(
 	state => ({
+        university: state.core.university,
+		cohort: state.core.cohort,
+		student: state.core.student
 	})
 )(Cohort))

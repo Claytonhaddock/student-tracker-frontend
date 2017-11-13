@@ -45,9 +45,11 @@ class Universities extends Component {
 
 	_handleSelectCohort(cohort){
 		const {
-			dispatch
+			dispatch,
+			university,
+			history
 		} = this.props
-
+		history.push(`/${university.shortName}/${cohort}`)
 		dispatch(selectCohort(cohort))
 	}
 
@@ -86,7 +88,7 @@ class Universities extends Component {
 	render(){
 		const {
 			universities,
-			university
+			university,
 		} = this.props
 
 		const {
